@@ -19,7 +19,8 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "scheduler": "^0.26.0",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@types/react": "^19.1.12",

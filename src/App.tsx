@@ -32,9 +32,9 @@ Do not list items or use headings. Write as a cohesive, well-structured paragrap
       const response = await fetch("https://api.fireworks.ai/inference/v1/chat/completions", {
         method: "POST",
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${apiKey}`,
+          Authorization: `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
           model: "accounts/sentientfoundation-serverless/models/dobby-mini-unhinged-plus-llama-3-1-8b",
@@ -62,8 +62,8 @@ Do not list items or use headings. Write as a cohesive, well-structured paragrap
     setErrorSummary(null);
 
     const summary = await generateSummaryFromAPI(inputs);
-
     setResumeParams({ ...inputs, summary });
+
     setLoadingSummary(false);
   }
 
@@ -100,14 +100,10 @@ Do not list items or use headings. Write as a cohesive, well-structured paragrap
           <div className="form-content">
             <ResumeForm onGenerate={handleGenerate} />
             {loadingSummary && (
-              <p style={{ color: "#9cffb9", marginTop: 10, fontWeight: "600" }}>
-                Generating summary...
-              </p>
+              <p style={{ color: "#9cffb9", marginTop: 10, fontWeight: "600" }}>Generating summary...</p>
             )}
             {errorSummary && (
-              <p style={{ color: "#ff7373", marginTop: 10, fontWeight: "600" }}>
-                {errorSummary}
-              </p>
+              <p style={{ color: "#ff7373", marginTop: 10, fontWeight: "600" }}>{errorSummary}</p>
             )}
           </div>
         </section>
@@ -115,7 +111,7 @@ Do not list items or use headings. Write as a cohesive, well-structured paragrap
         <section className="right-panel">
           {resumeParams ? (
             <>
-              <ResumePreview resumeParams={resumeParams} />
+              <ResumePreview resumeParams={resumeParams} selectedTemplate={selectedTemplate} />
               <div
                 style={{
                   width: "100%",
@@ -130,16 +126,13 @@ Do not list items or use headings. Write as a cohesive, well-structured paragrap
               </div>
             </>
           ) : (
-            <ResumePreview resumeParams={null} />
+            <ResumePreview resumeParams={null} selectedTemplate={selectedTemplate} />
           )}
         </section>
       </main>
 
       <section className="templates-section">
-        <TemplateChooser
-          selected={selectedTemplate}
-          setSelected={setSelectedTemplate}
-        />
+        <TemplateChooser selected={selectedTemplate} setSelected={setSelectedTemplate} />
       </section>
 
       <div className="built-by-gradient">Built by surojitpvt</div>
@@ -148,4 +141,3 @@ Do not list items or use headings. Write as a cohesive, well-structured paragrap
 };
 
 export default App;
-
